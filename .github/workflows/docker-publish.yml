@@ -21,7 +21,7 @@ env:
   REGISTRY: docker.io
   DOCKER_USER: shanraeth
   # github.repository as <account>/<repo>
-  IMAGE_NAME: shanraeth/mssql-scripter-docker
+  IMAGE_NAME: shanraeth/mssql-scripter
 
 
 jobs:
