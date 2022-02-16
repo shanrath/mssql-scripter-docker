@@ -1,0 +1,19 @@
+name: semver bump main
+on:
+  push:
+    branches: main
+
+jobs:
+  Tag-and-release:
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout the repository
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Fetch tags
+        shell: bash
+        run: git fetch --tags -f
+      - name: Autotag
+        uses: DanySK/semver-autotag-action@master
