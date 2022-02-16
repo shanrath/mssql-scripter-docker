@@ -4,4 +4,7 @@ RUN \
   pip install --upgrade pip
 
 RUN \
-  pip install -q mssql-scripter 
+  pip install -q mssql-scripter
+  
+RUN \
+  pip install -q mssql-cli
