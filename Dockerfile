@@ -21,18 +21,18 @@ RUN \
 RUN \
   curl https://packages.microsoft.com/config/debian/11/prod.list > /etc/apt/sources.list.d/mssql-release.list
 
-# install SQL Server drivers and tools
-RUN apt-get update && ACCEPT_EULA=Y apt-get install -y msodbcsql18
+# install SQL Server drivers and tools, sqlcmd, set locale
+RUN \
+  apt-get update -qq && ACCEPT_EULA=Y apt-get install -y msodbcsql18
 # optional: for bcp and sqlcmd
-RUN ACCEPT_EULA=Y apt-get install -y mssql-tools18
-RUN echo 'export PATH="$PATH:/opt/mssql-tools18/bin"' >> ~/.bashrc
-RUN /bin/bash -c "source ~/.bashrc"
+RUN \
+  ACCEPT_EULA=Y apt-get install -y mssql-tools18
+RUN \
+  echo 'export PATH="$PATH:/opt/mssql-tools18/bin"' >> ~/.bashrc
+RUN \
+  /bin/bash -c "source ~/.bashrc"
 
-
-
-RUN apt-get -y install locales
-RUN locale-gen en_US.UTF-8
-RUN update-locale LANG=en_US.UTF-8
-
+RUN \
+  apt-get -y install locales && locale-gen en_US.UTF-8 && update-locale en_US.UTF-8
 
 CMD /bin/bash 
