@@ -1,4 +1,4 @@
-FROM 3.9.10-slim-bullseye
+FROM python:3.9.10-slim-bullseye
 
 RUN \
   pip install --upgrade pip
